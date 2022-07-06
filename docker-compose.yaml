@@ -1,0 +1,11 @@
+version: '3'
+services:
+  fastapi:
+    build: .
+    image: avzeus-front-image
+    container_name: avzeus-front
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/app/
+    working_dir: /app/
