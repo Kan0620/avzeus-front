@@ -2,8 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from app.routers import index
-from app.settings.settings import api_info, tags_info
+from routers import index
+from settings.settings import api_info, tags_info
 
 app = FastAPI(
     title=api_info["title"],
