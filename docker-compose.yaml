@@ -7,5 +7,5 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./app:/app/
-    working_dir: /app/
+      - $HOME/:$HOME/
+    working_dir: $HOME/
