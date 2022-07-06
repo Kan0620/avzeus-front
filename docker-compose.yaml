@@ -1,6 +1,6 @@
 version: '3'
 services:
-  fastapi:
+  avzeus-front:
     build: .
     image: avzeus-front-image
     container_name: avzeus-front
