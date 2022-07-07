@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test page</title>
+  </head>
+  
+
+  <h1>AV Zeus</h1>
+  <h2>画像レコメンドモード</h2>
+
+
+  <body>
+    
+    <input type="file" id= "posted_image"  accept="image/png,image/jpeg,image/jpg" />
+    <script type="text/javascript">
+      document.getElementById("posted_image").addEventListener("change", function (e) {
+        // 1枚だけ表示する
+        var file = e.target.files[0];
+
+        // ファイルリーダー作成
+        var fileReader = new FileReader();
+        fileReader.onload = function() {
+            // Data URIを取得
+            var dataUri = this.result;
+
+            // img要素に表示
+            var img = document.getElementById("render_image");
+            console.log(dataUri)
+            img.src = dataUri;
+        }
+        // ファイルをData URIとして読み込む
+        fileReader.readAsDataURL(file);
+      }
+      );
+    </script>
+    <img id="render_image">
+  </body>
+</html>
