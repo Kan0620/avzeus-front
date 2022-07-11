@@ -35,7 +35,8 @@
     })
     .then(data => {
       console.log(data.result.img)
-      let img = data.result.img
+      var img = document.getElementById("render_image");
+      img.src = data = data.result.img
     })
     //console.log(response)
     //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
@@ -56,7 +57,7 @@
           { input_text: dataUri.replace(/data:.*\/.*;base64,/, '')}
           );
           
-          img.src = data;
+          //img.src = data;
         }
         // ファイルをData URIとして読み込む
         fileReader.readAsDataURL(file);}
