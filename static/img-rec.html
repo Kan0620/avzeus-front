@@ -17,7 +17,7 @@
     <script type="text/javascript">
       function postData(url = '', data = {}) {
         var btn = document.getElementById("btn");
-        btn.value = "顔の部分を探しています"
+        btn.value = "顔の部分を探しています..."
     // 既定のオプションには * が付いています
     //const response = await
       fetch(url, {
@@ -41,7 +41,7 @@
         img.src = "data:image/jpeg;base64," + data.result.img;
         btn.value = "お願いします！！"
       })
-      
+
     //console.log(response)
     //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
     
@@ -69,14 +69,18 @@
       <img id="render_image">
     </p>
     <p>
-      <button type="button" id="btn" value="画像をアップしてください" onclick="click()">画像をアップしてください</button>
+      <form name="fm">
+        <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()" >
+      </form>
     </p>
     <script type="text/javascript">
-    function click() {
+    function toResult() {
       var img = document.getElementById("render_image");
       var url = img.src;
       console.log(url)
-      window.open("https://avzeus-front.herokuapp.com/img-rec-result/?img="+url, '_blank');
+      window.open("https://avzeus-front.herokuapp.com/img-rec-result/?img="+url,
+      //'_blank'
+      );
     }
 
     </script>
