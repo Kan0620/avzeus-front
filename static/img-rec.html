@@ -36,11 +36,11 @@
     .then(data => {
       console.log(data.result.img)
       var img = document.getElementById("render_image");
-      img.src = data = data.result.img
+      img.src = data.result.img
     })
     //console.log(response)
     //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
-    return img; 
+    
     
   }
       document.getElementById("posted_image").addEventListener("change", function (e) {
@@ -51,9 +51,7 @@
         fileReader.onload = function() {
           // Data URIを取得
           var dataUri = this.result;
-          // img要素に表示
-          var img = document.getElementById("render_image");
-          var data = postData('https://nameless-sea-96924.herokuapp.com/api/v1/cut',
+          postData('https://nameless-sea-96924.herokuapp.com/api/v1/cut',
           { input_text: dataUri.replace(/data:.*\/.*;base64,/, '')}
           );
           
