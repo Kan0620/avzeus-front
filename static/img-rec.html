@@ -8,7 +8,7 @@
   </head>
   
 
-  <h1><a href="index">AV Zeus</a></h1>
+  <h1><a href="">AV Zeus</a></h1>
   <h2>画像レコメンドモード</h2>
   <body>
     <p>
@@ -71,6 +71,7 @@
     function click() {
       var img = document.getElementById("render_image");
       var url = img.src;
+      console.log(url)
       window.open("https://avzeus-front.herokuapp.com/img-rec-result/?img="+url, '_blank');
     }
 
