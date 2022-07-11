@@ -36,7 +36,7 @@
     .then(data => {
       console.log(data.result.img)
       var img = document.getElementById("render_image");
-      img.src = data.result.img.replace('"', '')
+      img.src = "data:image/jpeg;base64,/" + data.result.img.replace('"', '')
     })
     //console.log(response)
     //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
