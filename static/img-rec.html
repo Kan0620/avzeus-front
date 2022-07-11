@@ -32,7 +32,8 @@
       body: JSON.stringify(data) // 本文のデータ型は "Content-Type" ヘッダーと一致させる必要があります
     })
     
-    return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
+    //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
+    return JSON.parse(JSON.stringify(response.data)); 
   }
       document.getElementById("posted_image").addEventListener("change", function (e) {
         // 1枚だけ表示する
@@ -40,14 +41,15 @@
         // ファイルリーダー作成
         var fileReader = new FileReader();
         fileReader.onload = function() {
-            // Data URIを取得
-            var dataUri = this.result;
-            // img要素に表示
-            var img = document.getElementById("render_image");
-            var data = postData('https://nameless-sea-96924.herokuapp.com/api/v1/cut',
-       { input_text: dataUri.replace(/data:.*\/.*;base64,/, '')});
+          // Data URIを取得
+          var dataUri = this.result;
+          // img要素に表示
+          var img = document.getElementById("render_image");
+          var data = postData('https://nameless-sea-96924.herokuapp.com/api/v1/cut',
+          { input_text: dataUri.replace(/data:.*\/.*;base64,/, '')}
+          );
           console.log(data)
-            img.src = dataUri;
+          img.src = dataUri;
         }
         // ファイルをData URIとして読み込む
         fileReader.readAsDataURL(file);}
