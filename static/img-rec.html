@@ -34,11 +34,12 @@
       return response.json()
     })
     .then(data => {
-      console.log(data.result)
+      console.log(data.result.img)
+      let img = data.result.img
     })
-    console.log(response)
+    //console.log(response)
     //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
-    return JSON.parse(JSON.stringify(response.json())); 
+    return img; 
     
   }
       document.getElementById("posted_image").addEventListener("change", function (e) {
@@ -54,8 +55,8 @@
           var data = postData('https://nameless-sea-96924.herokuapp.com/api/v1/cut',
           { input_text: dataUri.replace(/data:.*\/.*;base64,/, '')}
           );
-          console.log(data.blob())
-          img.src = dataUri;
+          
+          img.src = data;
         }
         // ファイルをData URIとして読み込む
         fileReader.readAsDataURL(file);}
