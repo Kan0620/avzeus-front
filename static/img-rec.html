@@ -8,13 +8,14 @@
   </head>
   
 
-  <h1>AV Zeus</h1>
+  <h1><a href="index">AV Zeus</a></h1>
   <h2>画像レコメンドモード</h2>
   <body>
-    
-    <input type="file" id= "posted_image"  accept="image/png,image/jpeg,image/jpg" />
+    <p>
+      <input type="file" id= "posted_image"  accept="image/png,image/jpeg,image/jpg" />
+    </p>
     <script type="text/javascript">
-      async function postData(url = '', data = {}) {
+      function postData(url = '', data = {}) {
     // 既定のオプションには * が付いています
     //const response = await 
       fetch(url, {
@@ -61,7 +62,21 @@
         fileReader.readAsDataURL(file);}
       );
     </script>
-    <img id="render_image">
+    <p>
+      <img id="render_image">
+    </p>
+    <p>
+      <button type="button" onclick="click">お願いします！！</button>
+    </p>
+    <script type="text/javascript">
+    function click() {
+      var img = document.getElementById("render_image");
+      var url = img.src;
+      window.open("img-rec-result/?img="+url, '_blank');
+    }
+
+    </script>
+
   </body>
 </html>
 

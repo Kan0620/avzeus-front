@@ -7,7 +7,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="static")
 
 @router.get("/img-rec", response_class=HTMLResponse)
-async def kan(request: Request):
+async def img_rec(request: Request):
     return templates.TemplateResponse(
         "img-rec.html",
         {

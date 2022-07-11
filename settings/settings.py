@@ -12,12 +12,12 @@ api_info = {
 
 tags_info = [
     {
-        "name": "example",
-        "description": "example"
-    },
-    {
         "name": "index",
         "description": "appが動いてるか確認する"
+    },
+    {
+        "name": "html",
+        "description": "htmlを返す"
     },
     
 ]

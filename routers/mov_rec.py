@@ -7,7 +7,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="static")
 
 @router.get("/mov-rec", response_class=HTMLResponse)
-async def kan(request: Request):
+async def mov_rec(request: Request):
     return templates.TemplateResponse(
         "mov-rec.html",
         {
