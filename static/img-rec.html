@@ -33,7 +33,7 @@
     })
     
     //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
-    return JSON.parse(JSON.stringify(response)); 
+    return JSON.parse(JSON.stringify(response.text())); 
   }
       document.getElementById("posted_image").addEventListener("change", function (e) {
         // 1枚だけ表示する
@@ -58,3 +58,4 @@
     <img id="render_image">
   </body>
 </html>
+
