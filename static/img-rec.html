@@ -16,8 +16,10 @@
     </p>
     <script type="text/javascript">
       function postData(url = '', data = {}) {
+        var btn = document.getElementById("btn");
+        btn.value = "顔の部分を探しています"
     // 既定のオプションには * が付いています
-    //const response = await 
+    //const response = await
       fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -37,7 +39,9 @@
       .then(data => {
         var img = document.getElementById("render_image");
         img.src = "data:image/jpeg;base64," + data.result.img;
+        btn.value = "お願いします！！"
       })
+      
     //console.log(response)
     //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
     
@@ -65,7 +69,7 @@
       <img id="render_image">
     </p>
     <p>
-      <button type="button" onclick="click()">お願いします！！</button>
+      <button type="button" id="btn" value="画像をアップしてください" onclick="click()">画像をアップしてください</button>
     </p>
     <script type="text/javascript">
     function click() {
