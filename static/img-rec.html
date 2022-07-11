@@ -35,7 +35,6 @@
         return response.json()
       })
       .then(data => {
-        console.log(data.result.img)
         var img = document.getElementById("render_image");
         img.src = "data:image/jpeg;base64," + data.result.img;
       })
@@ -72,7 +71,7 @@
     function click() {
       var img = document.getElementById("render_image");
       var url = img.src;
-      window.open("img-rec-result/?img="+url, '_blank');
+      window.open("https://avzeus-front.herokuapp.com/img-rec-result/?img="+url, '_blank');
     }
 
     </script>
