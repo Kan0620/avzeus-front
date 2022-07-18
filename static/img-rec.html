@@ -17,6 +17,8 @@
       function postData(url = '', data = {}) {
         var btn = document.getElementById("btn");
         btn.value = "顔の部分を探しています..."
+        var img = document.getElementById("render_image");
+        img.src = NaN;
     // 既定のオプションには * が付いています
     //const response = await
       fetch(url, {
