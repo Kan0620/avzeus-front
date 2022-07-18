@@ -36,7 +36,8 @@
         return response.json()
       })
       .then(data => {
-        if (data.result.is_face){
+        var isFace = Boolean(data.result.is_face);
+        if (isFace){
           var img = document.getElementById("render_image");
           img.src = "data:image/jpeg;base64," + data.result.img;
           btn.value = "お願いします！！"
