@@ -37,6 +37,8 @@
       })
       .then(data => {
         var isFace = Boolean(data.result.is_face);
+        console.log(data.result.is_face)
+        console.log(isFace)
         if (isFace){
           var img = document.getElementById("render_image");
           img.src = "data:image/jpeg;base64," + data.result.img;
