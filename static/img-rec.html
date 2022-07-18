@@ -36,9 +36,13 @@
         return response.json()
       })
       .then(data => {
-        var img = document.getElementById("render_image");
-        img.src = "data:image/jpeg;base64," + data.result.img;
-        btn.value = "お願いします！！"
+        if (data.result.is_face){
+          var img = document.getElementById("render_image");
+          img.src = "data:image/jpeg;base64," + data.result.img;
+          btn.value = "お願いします！！"
+        }else{
+          btn.value = "顔の部分が検出できませんでした、他の画像を選択してください"
+        }
       })
 
     //console.log(response)
@@ -69,7 +73,7 @@
     </p>
     <p>
       <form name="fm">
-        <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()" >
+        <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()">
       </form>
     </p>
     <script type="text/javascript">
@@ -83,7 +87,11 @@
         );
       }else if (sub_btn.value == "顔の部分を探しています..."){
         window.alert("画像の顔部分を探しています。少々お待ちください。")
-      }else{
+      }
+      else if(sub_btn.value == "顔の部分が検出できませんでした、他の画像を選択してください"){
+        window.alert("他の画像を選択してください")
+      }
+      else{
         window.alert("画像を選択してください")
       }
       }
