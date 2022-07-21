@@ -78,8 +78,9 @@
       function toResult() {
         var sub_btn = document.getElementById("btn");
         if (sub_btn.value == "お願いします！！"){
+          sub_btn.value = "少々お待ちください"
           var img = document.getElementById("render_image");
-          fetch('https://nameless-sea-96924.herokuapp.com/api/v1/cut', {
+          fetch('https://nameless-sea-96924.herokuapp.com/api/v1/predict', {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -96,6 +97,7 @@
             return response.json()
           })
           .then(data => {
+            console.log(data.result.rec_actress_id)
             window.open("https://avzeus-front.herokuapp.com/img-rec-result/"+data.result.rec_actress_id,
             '_blank'
             );
@@ -112,9 +114,7 @@
         }
         }
       
-
     </script>
-
   </body>
 </html>
 
