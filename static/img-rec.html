@@ -15,10 +15,11 @@
     </p>
     <script type="text/javascript">
       function cutImg(url = '', data = {}) {
+        var img = document.getElementById("render_image");
+        img.style.visibility = 'hidden';
         var btn = document.getElementById("btn");
         btn.value = "顔の部分を探しています..."
-        var img = document.getElementById("render_image");
-        img.parentNode.removeChild(img);
+        
     // 既定のオプションには * が付いています
     //const response = await
         fetch(url, {
@@ -41,7 +42,8 @@
           if (data.result.is_face == "True"){
             var img = document.getElementById("render_image");
             img.src = "data:image/jpeg;base64," + data.result.img;
-            btn.value = "お願いします！！"
+            img.style.visibility = 'visible';
+            btn.value = "お願いします！！";
           }else{
             btn.value = "顔の部分が検出できませんでした、他の画像を選択してください"
           }
