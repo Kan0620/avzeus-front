@@ -14,44 +14,40 @@
       <input type="file" id= "posted_image"  accept="image/png,image/jpeg,image/jpg" />
     </p>
     <script type="text/javascript">
-      function postData(url = '', data = {}) {
+      function cutImg(url = '', data = {}) {
         var btn = document.getElementById("btn");
         btn.value = "顔の部分を探しています..."
         var img = document.getElementById("render_image");
-        img.src = NaN;
+        console.log(img.src)
+        img.src = "";
     // 既定のオプションには * が付いています
     //const response = await
-      fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'include', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'application/json'
+        fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'include', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
 
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'strict-origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data) // 本文のデータ型は "Content-Type" ヘッダーと一致させる必要があります
-      }).then(response => {
-        return response.json()
-      })
-      .then(data => {
-        if (data.result.is_face == "True"){
-          var img = document.getElementById("render_image");
-          img.src = "data:image/jpeg;base64," + data.result.img;
-          btn.value = "お願いします！！"
-        }else{
-          btn.value = "顔の部分が検出できませんでした、他の画像を選択してください"
-        }
-      })
-
-    //console.log(response)
-    //return JSON.parse(response.json()); // JSON のレスポンスをネイティブの JavaScript オブジェクトに解釈
-    
-    
-  }
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'strict-origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(data) // 本文のデータ型は "Content-Type" ヘッダーと一致させる必要があります
+        }).then(response => {
+          return response.json()
+        })
+        .then(data => {
+          if (data.result.is_face == "True"){
+            var img = document.getElementById("render_image");
+            img.src = "data:image/jpeg;base64," + data.result.img;
+            btn.value = "お願いします！！"
+          }else{
+            btn.value = "顔の部分が検出できませんでした、他の画像を選択してください"
+          }
+        })
+      }
       document.getElementById("posted_image").addEventListener("change", function (e) {
         // 1枚だけ表示する
         var file = e.target.files[0];
@@ -60,7 +56,7 @@
         fileReader.onload = function() {
           // Data URIを取得
           var dataUri = this.result;
-          postData('https://nameless-sea-96924.herokuapp.com/api/v1/cut',
+          cutImg('https://nameless-sea-96924.herokuapp.com/api/v1/cut',
           {input_text: dataUri.replace(/data:.*\/.*;base64,/, '')}
           );
           
@@ -79,24 +75,42 @@
       </form>
     </p>
     <script type="text/javascript">
-    function toResult() {
-      var sub_btn = document.getElementById("btn");
-      if (sub_btn.value == "お願いします！！"){
-        var img = document.getElementById("render_image");
-        var url = img.src;
-        window.open("https://avzeus-front.herokuapp.com/img-rec-result//"+url,
-        '_blank'
-        );
-      }else if (sub_btn.value == "顔の部分を探しています..."){
-        window.alert("画像の顔部分を探しています。少々お待ちください。")
-      }
-      else if(sub_btn.value == "顔の部分が検出できませんでした、他の画像を選択してください"){
-        window.alert("他の画像を選択してください")
-      }
-      else{
-        window.alert("画像を選択してください")
-      }
-      }
+      function toResult() {
+        var sub_btn = document.getElementById("btn");
+        if (sub_btn.value == "お願いします！！"){
+          var img = document.getElementById("render_image");
+          fetch('https://nameless-sea-96924.herokuapp.com/api/v1/cut', {
+          method: 'POST', // *GET, POST, PUT, DELETE, etc.
+          mode: 'cors', // no-cors, *cors, same-origin
+          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: 'include', // include, *same-origin, omit
+          headers: {
+            'Content-Type': 'application/json'
+
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          redirect: 'follow', // manual, *follow, error
+          referrerPolicy: 'strict-origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          body: JSON.stringify({input_text: img.src.replace(/data:.*\/.*;base64,/, '')}) // 本文のデータ型は "Content-Type" ヘッダーと一致させる必要があります
+          }).then(response => {
+            return response.json()
+          })
+          .then(data => {
+            window.open("https://avzeus-front.herokuapp.com/img-rec-result/"+data.result.rec_actress_id,
+            '_blank'
+            );
+          })
+
+        }else if (sub_btn.value == "顔の部分を探しています..."){
+          window.alert("画像の顔部分を探しています。少々お待ちください。")
+        }
+        else if(sub_btn.value == "顔の部分が検出できませんでした、他の画像を選択してください"){
+          window.alert("他の画像を選択してください")
+        }
+        else{
+          window.alert("画像を選択してください")
+        }
+        }
       
 
     </script>
