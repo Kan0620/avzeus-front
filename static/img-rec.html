@@ -18,8 +18,7 @@
         var btn = document.getElementById("btn");
         btn.value = "顔の部分を探しています..."
         var img = document.getElementById("render_image");
-        console.log(img.src)
-        img.src = "";
+        img.parentNode.removeChild(img);
     // 既定のオプションには * が付いています
     //const response = await
         fetch(url, {
