@@ -64,11 +64,9 @@
             if (imgReader.width < imgReader.height){
               var imgHeight = maxLength;
               var imgWidth = imgReader.width * (imgHeight / imgReader.height);
-              console.log(imgHeight);
-              console.log(imgWidth);
             } else {
               var imgWidth = maxLength;
-              var imgHight = imgReader.height * (imgWidth / imgReader.width);
+              var imgHeight = imgReader.height * (imgWidth / imgReader.width);
             }
             const canvas = document.createElement('canvas');
             console.log(imgHeight);
