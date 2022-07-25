@@ -39,6 +39,7 @@
             img.style.visibility = 'hidden';
             var btn = document.getElementById("btn");
             btn.value = "顔の部分を探しています..."
+            console.log(canvas.toDataURL(imgType).replace(/data:.*\/.*;base64,/, ''))
             
             // 既定のオプションには * が付いています
             //const response = await
