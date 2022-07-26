@@ -17,7 +17,8 @@
     </p>
     <script type="text/javascript">
       const cutImg = (e) => {
-        //const img = document.getElementById('hidden_image');
+        var btn = document.getElementById("btn");
+        btn.value = "画像を処理しています..."
         const reader = new FileReader();
         const imgReader = new Image();
         const maxLength = 640;
