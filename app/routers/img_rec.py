@@ -4,12 +4,12 @@ from fastapi.requests import Request
 from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
-templates = Jinja2Templates(directory="static")
+templates = Jinja2Templates(directory="app/static")
 
-@router.get("/img-rec-result/{img}", response_class=HTMLResponse)
-async def img_rec_result(img: str, request: Request):
+@router.get("/img-rec", response_class=HTMLResponse)
+async def img_rec(request: Request):
     return templates.TemplateResponse(
-        "img-rec-result.html",
+        "img-rec.html",
         {
             "request": request,
             }
