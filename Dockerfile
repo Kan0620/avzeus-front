@@ -4,6 +4,6 @@ COPY requirements.txt .
 
 RUN pip install -U pip && pip install  -r requirements.txt
 
-COPY $HOME/ $HOME/
+COPY ./app /app
 
-CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8080"]

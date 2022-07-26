@@ -2,8 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from routers import index, img_rec, mov_rec, img_rec_result
-from settings.settings import api_info, tags_info
+from app.routers import index, img_rec, mov_rec, img_rec_result
+from app.settings.settings import api_info, tags_info
 
 app = FastAPI(
     title=api_info["title"],
@@ -12,7 +12,7 @@ app = FastAPI(
     openapi_tags=tags_info
 )
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/app/static", StaticFiles(directory="app/static"), name="static")
 
 app.include_router(index.router, tags=["html"])
 app.include_router(img_rec.router, tags=["html"])

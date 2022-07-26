@@ -5,7 +5,6 @@ services:
     image: avzeus-front-image
     container_name: avzeus-front
     ports:
-      - 80:80
+      - 8080:8080
     volumes:
-      - $HOME/:$HOME/
-    working_dir: $HOME/
+      - ./app:/app
