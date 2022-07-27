@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
@@ -11,7 +13,6 @@ app = FastAPI(
     version=api_info["version"],
     openapi_tags=tags_info
 )
-
 app.mount("/app/static", StaticFiles(directory="app/static"), name="static")
 
 app.include_router(index.router, tags=["html"])

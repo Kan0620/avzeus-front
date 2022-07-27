@@ -44,8 +44,7 @@
             console.log(canvas.toDataURL(imgType).replace(/data:.*\/.*;base64,/, ''))
             
             // 既定のオプションには * が付いています
-            fetch('https://nameless-sea-96924.herokuapp.com/api/v1/cut', {
-            //fetch('http://0.0.0.0:80/api/v1/cut', {
+            fetch(process.env.CUT_URL, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -90,7 +89,7 @@
         if (sub_btn.value == "お願いします！！"){
           sub_btn.value = "少々お待ちください"
           var img = document.getElementById("render_image");
-          fetch('https://nameless-sea-96924.herokuapp.com/api/v1/predict', {
+          fetch(process.env.PREDICT_URL, {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
