@@ -12,5 +12,7 @@ async def img_rec(request: Request):
         "img-rec.html",
         {
             "request": request,
+            "cut_js_path": "cut.js",
+            "predict_js_path": "predict.js"
             }
     )
