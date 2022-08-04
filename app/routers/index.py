@@ -1,3 +1,4 @@
+import os
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
@@ -12,5 +13,6 @@ async def index(request: Request):
         "index.html",
         {
             "request": request,
+            "ORIGIN": os.environ["ORIGIN"],
             }
     )

@@ -7,13 +7,27 @@
     <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。このページではアップロードされた画像をもとに行ったレコメンドの結果を表示します。">
     <title>AV Zeus</title>
   </head>
-  
-
-  <h1><a href="https://www.av-zeus.com/">AV Zeus</a></h1>
-  <h2>画像レコメンドモード</h2>
-  <h2>結果</h2>
-  <p>dmm APIと連携して結果を表示します。</p>
   <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
+    <link rel=stylesheet href="{{ url_for('static', path='style.css') }}">
+
+    <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
+    <h2>画像レコメンドモード 結果</h2>
+    
+    {% for name, url, id in data %}
+    <p><a href="https://www.dmm.co.jp/digital/videoa/-/list/=/article=actress/id={{ id }}" target="_blank" rel="noopener noreferrer">
+      {% if url=="no-url" %}
+      <img src="{{ url_for('static', path='no-img.jpeg') }}" height=160 width=160 alt="画像が教示されません">
+      {% else %}
+      <img src={{ url }} height=160 width=160 alt="画像が教示されません">
+      {% endif %}
+      {{ name }}<i class="fa-solid fa-up-right-from-square"></i>
+    </a></p>
+    {% endfor %}
     
   </body>
 </html>

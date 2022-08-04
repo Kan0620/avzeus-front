@@ -1,0 +1,16 @@
+.card {
+    margin: 0.25rem;
+}
+
+.blog-body {
+    padding: 1.25em;
+}
+
+* {
+    font-family: 'Mplus 1p';
+}
+
+a[target=_blank] {
+	padding-right: 20px;
+	background: url(./up-right-from-square-solid.svg) right center/11px auto no-repeat;
+}

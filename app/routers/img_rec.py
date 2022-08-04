@@ -1,3 +1,5 @@
+import os
+
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
@@ -12,6 +14,7 @@ async def img_rec(request: Request):
         "img-rec.html",
         {
             "request": request,
+            "ORIGIN": os.environ["ORIGIN"],
             "cut_js_path": "cut.js",
             "predict_js_path": "predict.js"
             }

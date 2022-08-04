@@ -24,7 +24,7 @@ function toResult() {
         // window.open("https://avzeus-front.herokuapp.com/img-rec-result/"+data.result.rec_actress_id,
         // '_blank'
         // );
-        window.location.href = "https://www.av-zeus.com/img-rec-result/"+data.result.rec_actress_id
+        window.location.href = "ORIGIN" + "/img-rec-result/" + data.result.rec_actress_id
       })
 
     }else if (sub_btn.value == "顔の部分を探しています..."){

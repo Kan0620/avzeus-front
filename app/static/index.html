@@ -6,23 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。">
     <title>AV Zeus</title>
+    
   </head>
-  <h1><a href="https://www.av-zeus.com/">AV Zeus</a></h1>
-  <h2>サービス一覧</h2>
-  <p>AV ZeusはAIを使ったAVレコメンドサービスです。</p>
   
-
-
   <body>
-    <p>
-      <h3>画像レコメンドモード</h3>
-      <p>顔の画像をアップロードしてもらいAIがその顔に似ているAV女優を探します。</p>
-      <a href="img-rec">画像から女優をレコメンド</a>
-    </p>
-    <p>
-      <h3>動画レコメンドモード</h3>
-      <p>DMMのサンプル動画を見た履歴からレコメンドします。</p>
-      <a href="mov-rec">サンプル動画をレコメンド</a>
-    </p>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
+    <link rel=stylesheet href="{{ url_for('static', path='style.css') }}">
+    <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
+    <h2>サービス一覧</h2>
+    <p>AV ZeusはAIを使ったAVレコメンドサービスです。</p>
+      <p>
+        <h3><a href="img-rec">画像レコメンドモード</a></h3>
+        <p>顔の画像をアップロードしてもらいAIがその顔に似ているAV女優を探します。</p>
+        
+      </p>
+      <p>
+        <h3><a href="mov-rec">動画レコメンドモード</a></h3>
+        <p>DMMのサンプル動画を見た履歴からレコメンドします。</p>
+        
+      </p>
   </body>
 </html>

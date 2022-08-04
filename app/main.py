@@ -23,7 +23,3 @@ app.include_router(mov_rec.router, tags=["html"])
 
 app.add_event_handler("startup", start_app_handler(app))
 app.add_event_handler("shutdown", stop_app_handler(app))
-
-if __name__ == '__main__':
-    # コンソールで [$ uvicorn run:app --reload]でも可
-    uvicorn.run(app=app)

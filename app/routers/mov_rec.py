@@ -1,3 +1,5 @@
+import os
+
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
@@ -12,5 +14,6 @@ async def mov_rec(request: Request):
         "mov-rec.html",
         {
             "request": request,
+            "ORIGIN": os.environ["ORIGIN"],
             }
     )
