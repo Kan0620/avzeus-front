@@ -7,21 +7,19 @@ from fastapi import FastAPI
 
 
 def _startup_model(app: FastAPI) -> None:
+    URL = os.environ["URL"]
     with open("app/static/raw_cut.js", "r") as raw_cut:
-        CUT_URL = os.environ["CUT_URL"]
-        print(CUT_URL)
+        print(URL)
         code = raw_cut.read()
         with open("app/static/cut.js", "w") as cut:
-            code = code.replace("CUT_URL", CUT_URL)
+            code = code.replace("CUT_URL", URL + "cut")
             cut.write(code)
     with open("app/static/raw_predict.js", "r") as raw_cut:
-        PREDICT_URL = os.environ["PREDICT_URL"]
         ORIGIN = os.environ["ORIGIN"]
         code = raw_cut.read()
         with open("app/static/predict.js", "w") as cut:
-            code = code.replace("PREDICT_URL", PREDICT_URL).replace("ORIGIN", ORIGIN)
+            code = code.replace("PREDICT_URL", URL + "predict").replace("ORIGIN", ORIGIN)
             cut.write(code)
-    print(glob.glob("app/static/*"))
     
     with open("app/data/imageURL.csv", "r") as f:
         reader = csv.reader(f)

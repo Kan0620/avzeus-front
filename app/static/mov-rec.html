@@ -4,14 +4,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。このページでは動画をレコメンドをします。">
+    <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。このページでは動画をレコメンドします。">
     <title>AV Zeus</title>
-  </head>
-  <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
-  <h2>動画レコメンドモード</h2>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
+    <link rel=stylesheet href="{{ url_for('static', path='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    
 
+    
+  </head>
 
   <body>
+    
+    
+    
+    <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
+    <h2>動画レコメンドモード</h2>
+    <video src={{mov_url}} controls autoplay></video>
+    <div>
+      {% for content_id, title, imageURL in thumbnails %}
+      
+      <img src={{ imageURL }} height=269 width=400 alt="画像が表示されません" value={{ content_id }}>
+      <p>{{ title }}</p>
+      
+      {% endfor %}
+    </div>
     
   </body>
 </html>
