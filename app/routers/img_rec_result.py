@@ -13,11 +13,10 @@ async def img_rec_result(result: str, request: Request):
     result_ids = result.split("-")
     names = []
     imageURLs = []
-    print(result_ids)
     for result_id in result_ids:
         index = request.app.state.ids.index(result_id)
         names .append(request.app.state.names[index])
-        imageURLs.append(request.app.state.imageURLs[index])
+        imageURLs.append(request.app.state.imageURLs[index].replace("http:", "https:"))
     return templates.TemplateResponse(
         "img-rec-result.html",
         {
