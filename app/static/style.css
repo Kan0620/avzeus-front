@@ -14,16 +14,3 @@ a[target=_blank] {
 	padding-right: 20px;
 	background: url(./up-right-from-square-solid.svg) right center/11px auto no-repeat;
 }
-
-.container {
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
-
-.container .area {
-    scroll-snap-align: start;
-}
-.slider img {
-    width:400;/*スライダー内の画像を横幅100%に*/
-    height:269;
-}
