@@ -6,33 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。このページではアップロードされた画像をもとにレコメンドをします。">
     <title>AV Zeus</title>
-    <script src="{{ url_for('static', path=cut_js_path) }}"></script>
-    <script src="{{ url_for('static', path=predict_js_path) }}"></script>
-    
-  </head>
-  
-  <body>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
     <link rel=stylesheet href="{{ url_for('static', path='style.css') }}">
-    <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
-    <h2>画像レコメンドモード</h2>
-    <p>
-      <p>顔のある画像をアップしてください。AIが顔の部分を探します。</p>
-      <input type="file" id= "posted_image"  accept="image/*" onchange="cutImg(this)"/>
-    </p>
-    <p>
-      <img id="render_image" height=160 width=160>
-    </p>
-    <p>
-      <form name="fm">
-        <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()">
-      </form>
-    </p>
+    <link rel="icon" href="{{ url_for('static', path='favicon_64.ico') }}">
+    <script src="{{ url_for('static', path=cut_js_path) }}"></script>
+    <script src="{{ url_for('static', path=predict_js_path) }}"></script>
     
+  </head>
+  
+  <body>
+    <header>
+      <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
+      <h2>サービス一覧</h2>
+    </header>
+    <main>
+      <p>
+        <p>顔のある画像をアップしてください。AIが顔の部分を探します。</p>
+        <input type="file" id= "posted_image"  accept="image/*" onchange="cutImg(this)"/>
+      </p>
+      <p>
+        <img id="render_image" height=160 width=160>
+      </p>
+      <p>
+        <form name="fm">
+          <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()">
+        </form>
+      </p>
+    </main>
   </body>
 </html>
 

@@ -6,28 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。このページではアップロードされた画像をもとに行ったレコメンドの結果を表示します。">
     <title>AV Zeus</title>
-  </head>
-  <body>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
     <link rel=stylesheet href="{{ url_for('static', path='style.css') }}">
-
-    <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
-    <h2>画像レコメンドモード 結果</h2>
-    
-    {% for name, url, id in data %}
-    <p><a href="https://www.dmm.co.jp/digital/videoa/-/list/=/article=actress/id={{ id }}" target="_blank" rel="noopener noreferrer">
-      {% if url=="no-url" %}
-      <img src="{{ url_for('static', path='no-img.jpeg') }}" height=160 width=160 alt="画像が教示されません">
-      {% else %}
-      <img src={{ url }} height=160 width=160 alt="画像が教示されません">
-      {% endif %}
-      {{ name }}<i class="fa-solid fa-up-right-from-square"></i>
-    </a></p>
-    {% endfor %}
-    
+    <link rel="icon" href="{{ url_for('static', path='favicon_64.ico') }}">
+  </head>
+  <body>
+    <header>
+      <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
+      <h2>サービス一覧</h2>
+    </header>
+    <main>
+      {% for name, url, id in data %}
+      <p><a href="https://www.dmm.co.jp/digital/videoa/-/list/=/article=actress/id={{ id }}" target="_blank" rel="noopener noreferrer">
+        {% if url=="no-url" %}
+        <img src="{{ url_for('static', path='no-img.jpeg') }}" height=160 width=160 alt="画像が教示されません">
+        {% else %}
+        <img src={{ url }} height=160 width=160 alt="画像が教示されません">
+        {% endif %}
+        {{ name }}<i class="fa-solid fa-up-right-from-square"></i>
+      </a></p>
+      {% endfor %}
+    </main>
   </body>
 </html>
