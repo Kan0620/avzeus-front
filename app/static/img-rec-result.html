@@ -17,22 +17,35 @@
   <body>
     <header>
       <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
-      <h2>サービス一覧</h2>
+      <h2>画像レコメンドモード 結果</h2>
     </header>
     <main>
-      {% for name, url, id in data %}
-      <p><a href="https://www.dmm.co.jp/digital/videoa/-/list/=/article=actress/id={{ id }}" target="_blank" rel="noopener noreferrer">
-        {% if url=="no-url" %}
-        <img src="{{ url_for('static', path='no-img.jpeg') }}" height=160 width=160 alt="画像が教示されません">
-        {% else %}
-        <img src={{ url }} height=160 width=160 alt="画像が教示されません">
-        {% endif %}
-        {{ name }}<i class="fa-solid fa-up-right-from-square"></i>
-      </a></p>
-      {% endfor %}
+      <div style="overflow: scroll;height:650px">
+        {% for name, id, imageURL, affiliateURL in data %}
+        <div>
+          {% if affiliateURL=="no-url" %}
+          <p><a href="https://www.dmm.co.jp/digital/videoa/-/list/=/article=actress/id={{ id }}" target="_blank" rel="noopener noreferrer">
+          {% else %}
+          <p><a href="{{ affiliateURL}}" target="_blank" rel="noopener noreferrer">
+          {% endif %}
+          
+            {% if imageURL=="no-url" %}
+            <img src="{{ url_for('static', path='no-img.jpeg') }}" height=160 width=160 alt="画像が表示されません">
+            {% else %}
+            <img src={{ imageURL }} height=160 width=160 alt="画像が表示されません">
+            {% endif %}
+            {{ name }}<i class="fa-solid fa-up-right-from-square"></i>
+        </a></p>
+        </div>
+        {% endfor %}
+      </div>
+      
     </main>
     <footer>
-      <p>© 2022 av-zeus.com </p>
+      <center>
+        <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
+        <p>© 2022 av-zeus.com </p>
+      </center>
     </footer>
   </body>
 </html>

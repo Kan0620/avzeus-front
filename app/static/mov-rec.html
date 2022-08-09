@@ -19,15 +19,17 @@
   <body>
     <header>
       <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
-      <h2>サービス一覧</h2>
+      <h2>動画レコメンドモード</h2>
     </header>
     <main>
       <div class="movie" style="border: 1px solid #333333;">
         <video src={{mov_url}} controls autoplay alt="動画が見つかりませんでした" style="width:100%"></video>
         <footer>
-          <a href="https://www.dmm.co.jp/digital/videoa/-/detail/=/cid={{mov_id}}/" target="_blank" rel="noopener noreferrer">
-            {{ mov_title }}<i class="fa-solid fa-up-right-from-square"></i>
-          </a>
+          <center>
+            <a href="{{ affiliateURL }}" target="_blank" rel="noopener noreferrer">
+              {{ mov_title }}<i class="fa-solid fa-up-right-from-square"></i></a>
+          </center>
+          
         </footer>
       </div>
       
@@ -42,7 +44,10 @@
       </div>
     </main>
     <footer>
-      <p>© 2022 av-zeus.com </p>
+      <center>
+        <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
+        <p>© 2022 av-zeus.com </p>
+      </center>
     </footer>
   </body>
 </html>

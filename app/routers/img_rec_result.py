@@ -13,16 +13,18 @@ async def img_rec_result(result: str, request: Request):
     result_ids = result.split("-")
     names = []
     imageURLs = []
+    affiliateURLs = []
     for result_id in result_ids:
         index = request.app.state.ids.index(result_id)
         names .append(request.app.state.names[index])
         imageURLs.append(request.app.state.imageURLs[index].replace("http:", "https:"))
+        affiliateURLs.append(request.app.state.affiliateURLs[index])
     return templates.TemplateResponse(
         "img-rec-result.html",
         {
             "request": request,
             "ORIGIN": os.environ["ORIGIN"],
-            "data": zip(names, imageURLs, result_ids)
+            "data": zip(names, result_ids, imageURLs, affiliateURLs)
             }
     )
     

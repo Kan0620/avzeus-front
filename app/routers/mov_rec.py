@@ -34,6 +34,7 @@ async def mov_rec(saw_ids: str, request: Request):
             "mov_id": mov_id,
             "mov_url": f"https://cc3001.dmm.co.jp/litevideo/freepv/{mov_id[0]}/{mov_id[:3]}/{mov_id}/{mov_id}_dmb_w.mp4",
             "mov_title": r.json()["result"]["movie"]["title"],
+            "affiliateURL": r.json()["result"]["movie"]["affiliateURL"],
             "thumbnails": thumbnails
                 
             }
