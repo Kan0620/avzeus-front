@@ -1,0 +1,43 @@
+/* 縦長の時 */
+@media (orientation: portrait) {
+    #movie *{
+        width:100%;
+    }
+    
+    #thumbnails *{
+        width:100%;
+    }
+    #thumbnails{
+        
+        overflow: scroll;
+    }
+}
+/* 横長の時 */
+@media (orientation: landscape) {
+    .contents #thumbnails{
+        width:40%;
+    }
+    .contents #movie{
+        width:60%;
+    }
+    .contents{
+        display: flex;
+        
+    }
+    #movie *{
+        width:100%;
+    }
+    
+    #thumbnails *{
+        width:100%;
+    }
+    #thumbnails{
+        height: 400px;;
+        overflow: scroll;
+    }
+    
+}
+a[target=_blank] {
+	padding-right: 20px;
+	background: url(../img/up-right-from-square-solid.svg) right center/11px auto no-repeat;
+}

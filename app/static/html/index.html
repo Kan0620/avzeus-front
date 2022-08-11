@@ -4,45 +4,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。このページではアップロードされた画像をもとにレコメンドをします。">
+    <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。">
     <title>AV Zeus</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
-    <link rel=stylesheet href="{{ url_for('static', path='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', path='favicon_64.ico') }}">
-    <script src="{{ url_for('static', path=cut_js_path) }}"></script>
-    <script src="{{ url_for('static', path=predict_js_path) }}"></script>
-    
+    <link rel=stylesheet href="{{ url_for('static', path='css/index.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='img/favicon_64.ico') }}">
   </head>
   
   <body>
+    
     <header>
       <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
-      <h2>画像レコメンドモード</h2>
+      <h2>サービス一覧</h2>
     </header>
     <main>
-      <p>
-        <p>顔のある画像をアップしてください。AIが顔の部分を探します。</p>
-        <input type="file" id= "posted_image"  accept="image/*" onchange="cutImg(this)"/>
-      </p>
-      <p>
-        <img id="render_image" height=160 width=160>
-      </p>
-      <p>
-        <form name="fm">
-          <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()">
-        </form>
-      </p>
+      <nav>
+        
+      </nav>
+      
+      <div>
+        <center><h3><a href="img-rec">画像レコメンドモード</a></h3></center>
+        <p>顔の画像をアップロードしてもらいAIがその顔に似ているAV女優を探します。</p>
+      </div>
+      <div>
+        <center><h3><a href="mov-rec/init">動画レコメンドモード</a></h3></center>
+        <p>DMMのサンプル動画を見た履歴からレコメンドします。</p>
+      </div>
     </main>
     <footer>
       <center>
         <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
-        <p>© 2022 av-zeus.com </p>
+        <p>© 2022 av-zeus.com</p>
       </center>
     </footer>
   </body>
 </html>
-

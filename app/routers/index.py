@@ -10,9 +10,10 @@ templates = Jinja2Templates(directory="app/static")
 @router.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse(
-        "index.html",
+        "html/index.html",
         {
             "request": request,
             "ORIGIN": os.environ["ORIGIN"],
             }
     )
+    

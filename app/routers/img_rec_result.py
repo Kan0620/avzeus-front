@@ -20,7 +20,7 @@ async def img_rec_result(result: str, request: Request):
         imageURLs.append(request.app.state.imageURLs[index].replace("http:", "https:"))
         affiliateURLs.append(request.app.state.affiliateURLs[index])
     return templates.TemplateResponse(
-        "img-rec-result.html",
+        "html/img-rec-result.html",
         {
             "request": request,
             "ORIGIN": os.environ["ORIGIN"],

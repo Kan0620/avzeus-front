@@ -8,19 +8,18 @@ from fastapi import FastAPI
 
 def _startup_model(app: FastAPI) -> None:
     URL = os.environ["URL"]
-    with open("app/static/raw_cut.js", "r") as raw_cut:
+    with open("app/static/js/raw_cut.js", "r") as raw_cut:
         print(URL)
         code = raw_cut.read()
-        with open("app/static/cut.js", "w") as cut:
+        with open("app/static/js/cut.js", "w") as cut:
             code = code.replace("CUT_URL", URL + "cut")
             cut.write(code)
-    with open("app/static/raw_predict.js", "r") as raw_cut:
+    with open("app/static/js/raw_predict.js", "r") as raw_cut:
         ORIGIN = os.environ["ORIGIN"]
         code = raw_cut.read()
-        with open("app/static/predict.js", "w") as cut:
+        with open("app/static/js/predict.js", "w") as cut:
             code = code.replace("PREDICT_URL", URL + "predict").replace("ORIGIN", ORIGIN)
             cut.write(code)
-    
     with open("app/data/actress_data.csv", "r") as f:
         reader = csv.reader(f)
         ids = []
@@ -38,8 +37,9 @@ def _startup_model(app: FastAPI) -> None:
         app.state.affiliateURLs = affiliateURLs
                 
 def _shutdown_model(app: FastAPI) -> None:
-    os.remove("app/static/cut.js")
-    os.remove("app/static/predict.js")
+    os.remove("app/js/static/cut.js")
+    os.remove("app/js/static/predict.js")
+    
     
 
 

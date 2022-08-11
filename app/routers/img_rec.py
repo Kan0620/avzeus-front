@@ -11,7 +11,7 @@ templates = Jinja2Templates(directory="app/static")
 @router.get("/img-rec", response_class=HTMLResponse)
 async def img_rec(request: Request):
     return templates.TemplateResponse(
-        "img-rec.html",
+        "html/img-rec.html",
         {
             "request": request,
             "ORIGIN": os.environ["ORIGIN"],
@@ -19,3 +19,4 @@ async def img_rec(request: Request):
             "predict_js_path": "predict.js"
             }
     )
+    

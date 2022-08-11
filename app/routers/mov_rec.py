@@ -25,7 +25,7 @@ async def mov_rec(saw_ids: str, request: Request):
     else:
         saw_ids += "-"
     return templates.TemplateResponse(
-        "mov-rec.html",
+        "html/mov-rec.html",
         
         {
             "request": request,

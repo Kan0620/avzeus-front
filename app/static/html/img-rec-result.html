@@ -11,8 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
-    <link rel=stylesheet href="{{ url_for('static', path='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', path='favicon_64.ico') }}">
+    <link rel=stylesheet href="{{ url_for('static', path='css/img-rec-result.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='img/favicon_64.ico') }}">
   </head>
   <body>
     <header>
@@ -30,7 +30,7 @@
           {% endif %}
           
             {% if imageURL=="no-url" %}
-            <img src="{{ url_for('static', path='no-img.jpeg') }}" height=160 width=160 alt="画像が表示されません">
+            <img src="{{ url_for('static', path='img/no-img.jpeg') }}" height=160 width=160 alt="画像が表示されません">
             {% else %}
             <img src={{ imageURL }} height=160 width=160 alt="画像が表示されません">
             {% endif %}
