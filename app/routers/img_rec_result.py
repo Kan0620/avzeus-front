@@ -24,7 +24,8 @@ async def img_rec_result(result: str, request: Request):
         {
             "request": request,
             "ORIGIN": os.environ["ORIGIN"],
-            "data": zip(names, result_ids, imageURLs, affiliateURLs)
+            "data": zip(names, result_ids, imageURLs, affiliateURLs),
+            "now_url": result
             }
     )
     
