@@ -55,3 +55,4 @@ def stop_app_handler(app: FastAPI) -> Callable:
         _shutdown_model(app)
 
     return shutdown
+

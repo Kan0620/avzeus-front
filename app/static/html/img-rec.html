@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。このページではアップロードされた画像をもとにレコメンドをします。">
-    <title>AV Zeus</title>
+    <meta name="description" content="AV ゼウスはAIを使ったAVレコメンドサービスです。このページではアップロードされた画像をもとにレコメンドをします。">
+    <title>AVゼウス</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -30,30 +30,37 @@
   
   <body>
     <header>
-      <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
-      <h2>画像レコメンドモード</h2>
+      <p><a href="{{ ORIGIN }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/img-rec">画像レコメンドモード</a></p>
     </header>
     <main>
-      <p>
-        <p>顔のある画像をアップしてください。AIが顔の部分を探します。</p>
-        <input type="file" id= "posted_image"  accept="image/*" onchange="cutImg(this)"/>
-      </p>
-      <p>
-        <img id="render_image" height=160 width=160>
-      </p>
-      <p>
-        <form name="fm">
-          <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()">
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src="{{ url_for('static', path='img/zeus.png') }}">
+        </div>
+        <div class="chatting">
+          <div class="says">
+            <p id="zeus-says">お主の<strong>タイプな女の子の顔が映ってる画像</strong>をアップしてくれ！！似ているAV女優を教えるぞい</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form>
+          <input type="file" id= "posted_image"  accept="image/*" onchange="cutImg(this)"/>
         </form>
-      </p>
+      </div>
+      <div>
+        <img id="render_image" height=160 width=160>
+      </div>
+      <div>
+        <form>
+          <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()" style="visibility:hidden">
+        </form>
+      </div>
     </main>
-    <footer>
-      <center>
-        <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
-        <small>
-          <p>© 2022 av-zeus.com </p>
-        </small>
-      </center>
+    <footer style="width: 100%; font-size: 14px; text-align: center;">
+      <p><a href="{{ ORIGIN }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec">画像レコメンドモード</a> | <a href="{{ ORIGIN }}/mov-rec/init">動画レコメンドモード</a></p>
+      <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
+      <p>© 2022 <a href="{{ ORIGIN }}">av-zeus.com</a> All Rights Reserved.</p>
     </footer>
   </body>
 </html>

@@ -1,6 +1,8 @@
 const cutImg = (e) => {
     var btn = document.getElementById("btn");
     btn.value = "画像を処理しています..."
+    var zeus = document.getElementById("zeus-says");
+    zeus.innerHTML = "ぬぬぬ...画像を処理しとるぞ..."
     const reader = new FileReader();
     const imgReader = new Image();
     const maxLength = 640;
@@ -21,6 +23,8 @@ const cutImg = (e) => {
             ctx.drawImage(imgReader,0,0,imgWidth,imgHeight);
             var img = document.getElementById("render_image");
             img.style.visibility = 'hidden';
+            var zeus = document.getElementById("zeus-says");
+            zeus.innerHTML = "顔の部分を探しているからもう少し待ってくれよの..."
             var btn = document.getElementById("btn");
             btn.value = "顔の部分を探しています..."
             console.log(canvas.toDataURL(imgType).replace(/data:.*\/.*;base64,/, ''))
@@ -45,7 +49,10 @@ const cutImg = (e) => {
                 var img = document.getElementById("render_image");
                 img.src = "data:image/jpeg;base64," + data.result.img;
                 img.style.visibility = 'visible';
-                btn.value = "お願いします！！";
+                btn.style.visibility = 'visible';
+                var zeus = document.getElementById("zeus-says");
+                zeus.innerHTML = "顔の部分はここであっとるかの？よければ<strong>OKボタン</strong>をクリックしてくれ！！"
+                btn.value = "OK！！";
             }else{
                 btn.value = "顔の部分が検出できませんでした、他の画像を選択してください"
             }

@@ -1,7 +1,9 @@
 function toResult() {
     
     var sub_btn = document.getElementById("btn");
-    if (sub_btn.value == "お願いします！！"){
+    if (sub_btn.value == "OK！！"){
+      var zeus = document.getElementById("zeus-says");
+      zeus.innerHTML = "似ているAV女優を探しておるから少し待ってくれよの..."
       sub_btn.value = "少々お待ちください"
       var img = document.getElementById("render_image");
       fetch("PREDICT_URL", {

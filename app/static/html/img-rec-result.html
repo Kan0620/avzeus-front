@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。このページではアップロードされた画像をもとに行ったレコメンドの結果を表示します。">
-    <title>AV Zeus</title>
+    <meta name="description" content="AV ゼウスはAIを使ったAVレコメンドサービスです。このページではアップロードされた画像をもとに行ったレコメンドの結果を表示します。">
+    <title>AVゼウス</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -26,17 +26,27 @@
   </head>
   <body>
     <header>
-      <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
+      <h1><a href="{{ ORIGIN }}">AVゼウス</a></h1>
       <h2>画像レコメンドモード 結果</h2>
     </header>
     <main>
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src="{{ url_for('static', path='img/zeus.png') }}">
+        </div>
+        <div class="chatting">
+          <div class="says">
+            <p>この女の子たちが似ていると思うぞい！！リンクを押すと<strong>FANZAのページに行ける</strong>からぜひ調べてくれよの！！</p>
+          </div>
+        </div>
+      </div>
       <div style="overflow: scroll;height:650px">
         {% for name, id, imageURL, affiliateURL in data %}
-        <div>
+        <div class="thumbnail">
           {% if affiliateURL=="no-url" %}
-          <p><a href="https://www.dmm.co.jp/digital/videoa/-/list/=/article=actress/id={{ id }}" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.dmm.co.jp/digital/videoa/-/list/=/article=actress/id={{ id }}" target="_blank" rel="noopener noreferrer">
           {% else %}
-          <p><a href="{{ affiliateURL}}" target="_blank" rel="noopener noreferrer">
+          <a href="{{ affiliateURL}}" target="_blank" rel="noopener noreferrer">
           {% endif %}
           
             {% if imageURL=="no-url" %}
@@ -45,19 +55,16 @@
             <img src={{ imageURL }} height=160 width=160 alt="画像が表示されません">
             {% endif %}
             {{ name }}<i class="fa-solid fa-up-right-from-square"></i>
-        </a></p>
+        </a>
         </div>
         {% endfor %}
       </div>
       
     </main>
-    <footer>
-      <center>
-        <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
-        <small>
-          <p>© 2022 av-zeus.com </p>
-        </small>
-      </center>
+    <footer style="width: 100%; font-size: 14px; text-align: center;">
+      <p><a href="{{ ORIGIN }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec">画像レコメンドモード</a> | <a href="{{ ORIGIN }}/mov-rec/init">動画レコメンドモード</a></p>
+      <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
+      <p>© 2022 <a href="{{ ORIGIN }}">av-zeus.com</a> All Rights Reserved.</p>
     </footer>
   </body>
 </html>

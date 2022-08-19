@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AV ZeusはAIを使ったAVレコメンドサービスです。">
-    <title>AV Zeus</title>
+    <meta name="description" content="AVゼウスはAIを使ったAVレコメンドサービスです。">
+    <title>AVゼウス</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -28,30 +28,34 @@
   <body>
     
     <header>
-      <h1><a href="{{ ORIGIN }}">AV Zeus</a></h1>
-      <h2>サービス一覧</h2>
+      <h1><a href="{{ ORIGIN }}">AVゼウス</a></h1>
     </header>
     <main>
       <nav>
         
       </nav>
       
-      <div>
-        <center><h3><a href="img-rec">画像レコメンドモード</a></h3></center>
-        <p>顔の画像をアップロードしてもらいAIがその顔に似ているAV女優を探します。</p>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src="{{ url_for('static', path='img/zeus.png') }}">
+        </div>
+        <div class="chatting">
+          <div class="says">
+            <p>ワシが全痴全能の神<strong>AVゼウス</strong>じゃ！！お主は<strong>AV女優かAV</strong>、どっちをおすすめして欲しいのじゃ？？</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <center><h3><a href="mov-rec/init">動画レコメンドモード</a></h3></center>
-        <p>DMMのサンプル動画を見た履歴からレコメンドします。</p>
-      </div>
+      <div class="content-links">
+        <a href="img-rec" class="content-link"><center><strong>AV女優</strong>を教えてほしい！</center></a>
+        <a href="mov-rec/init" class="content-link"><center><strong>AV</strong>を教えて欲しい！</center></a>
+        </div>
+      
     </main>
-    <footer>
-      <center>
-        <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
-        <small>
-          <p>© 2022 av-zeus.com </p>
-        </small>
-      </center>
+    <footer style="width: 100%; font-size: 14px; text-align: center;">
+      <p><a href="{{ ORIGIN }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec">画像レコメンドモード</a> | <a href="{{ ORIGIN }}/mov-rec/init">動画レコメンドモード</a></p>
+      <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
+      <p>© 2022 <a href="{{ ORIGIN }}">av-zeus.com</a> All Rights Reserved.</p>
     </footer>
   </body>
 </html>

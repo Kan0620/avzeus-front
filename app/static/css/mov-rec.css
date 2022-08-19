@@ -3,6 +3,9 @@
     #movie *{
         width:100%;
     }
+    #movie {
+        margin-bottom:10px;
+    }
     
     #thumbnails *{
         width:100%;
@@ -11,6 +14,64 @@
         height: 400px;
         overflow: scroll;
     }
+    .thumbnail{
+        background: #d7ebfe;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: solid 3px #067dec;
+    }
+    a[target=_blank] {
+        padding-right: 20px;
+        background: url(../img/up-right-from-square-solid.svg) right center/11px auto no-repeat;
+    }
+    .balloon5 {
+        width: 100%;
+        margin: 1.5em 0;
+        padding: 2px;
+        overflow: hidden;
+    }
+    
+    .balloon5 .faceicon {
+    float: left;
+    margin-right: -90px;
+    width: 80px;
+    }
+    
+    .balloon5 .faceicon img{
+    width: 100%;
+    height: auto;
+    border: solid 3px #d7ebfe;
+    border-radius: 50%;
+    }
+    
+    .balloon5 .chatting {
+    width: 100%;
+    }
+    
+    .says {
+    display: inline-block;
+    position: relative; 
+    margin: 5px 0 0 105px;
+    padding: 17px 13px;
+    border-radius: 12px;
+    background: #d7ebfe;
+    }
+    
+    .says:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px; 
+    left: -24px;
+    border: 12px solid transparent;
+    border-right: 12px solid #d7ebfe;
+    }
+    
+    .says p {
+    margin: 0;
+    padding: 0;
+    }
+    
 }
 /* 横長の時 */
 @media (orientation: landscape) {
@@ -35,9 +96,63 @@
         height: 400px;
         overflow: scroll;
     }
+    .thumbnail{
+        background: #d7ebfe;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: solid 3px #067dec;
+    }
+    a[target=_blank] {
+        padding-right: 20px;
+        background: url(../img/up-right-from-square-solid.svg) right center/11px auto no-repeat;
+    }
+    .balloon5 {
+        width: 100%;
+        margin: 1.5em 0;
+        padding: 2px;
+        overflow: hidden;
+    }
+    
+    .balloon5 .faceicon {
+    float: left;
+    margin-right: -90px;
+    width: 80px;
+    }
+    
+    .balloon5 .faceicon img{
+    width: 100%;
+    height: auto;
+    border: solid 3px #d7ebfe;
+    border-radius: 50%;
+    }
+    
+    .balloon5 .chatting {
+    width: 100%;
+    }
+    
+    .says {
+    display: inline-block;
+    position: relative; 
+    margin: 5px 0 0 105px;
+    padding: 17px 13px;
+    border-radius: 12px;
+    background: #d7ebfe;
+    }
+    
+    .says:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px; 
+    left: -24px;
+    border: 12px solid transparent;
+    border-right: 12px solid #d7ebfe;
+    }
+    
+    .says p {
+    margin: 0;
+    padding: 0;
+    }
     
 }
-a[target=_blank] {
-	padding-right: 20px;
-	background: url(../img/up-right-from-square-solid.svg) right center/11px auto no-repeat;
-}
+
