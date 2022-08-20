@@ -38,22 +38,20 @@
         </div>
         <div class="chatting">
           <div class="says">
-            <p>下の動画を見ていくとお主の好きなAVが下のサムネイルに出てくるようになるぞい！！気になるAVは<strong>FANZAのリンク</strong>に飛べるぞい！！</p>
+            <p>気になるAVは<strong><a href="{{ affiliateURL }}" target="_blank" rel="noopener noreferrer">FANZAのリンク</a></strong>に飛べるぞい！！</p>
           </div>
         </div>
       </div>
       <div class="contents">
         <div class="content" id="movie">
           <video src={{mov_url}} controls autoplay playsinline alt="動画が見つかりませんでした" id="video"></video>
-        
-          
-            
         </div>
         
         <div class="content" id="thumbnails">
+          
           <div class="thumbnail">
             <center>
-              <a href="{{ affiliateURL }}" target="_blank" rel="noopener noreferrer">
+              <a href="{{ affiliateURL }}" target="_blank" rel="noopener noreferrer" class="movie-title">
                 <p>now playing</p>
                 {{ mov_title }}<i class="fa-solid fa-up-right-from-square"></i>
               </a>
@@ -68,13 +66,15 @@
             </a>
           </div>
           {% endfor %}
+          
         </div>
-    </div>
+      </div>
     </main>
     <footer style="width: 100%; font-size: 14px; text-align: center;">
       <p><a href="{{ ORIGIN }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec">AV女優レコメンド</a> | <a href="{{ ORIGIN }}/mov-rec/init">AVレコメンド</a></p>
       <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
       <p>© 2022 <a href="{{ ORIGIN }}">av-zeus.com</a> All Rights Reserved.</p>
     </footer>
+    
   </body>
 </html>

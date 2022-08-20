@@ -26,7 +26,7 @@
   </head>
   <body>
     <header>
-      <p><a href="{{ ORIGIN }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/img-rec">AV女優レコメンド</a> ＞ <a href="{{ ORIGIN }}/img-rec-result/{{ now_url }}">AV女優レコメンド 結果</a></p>
+      <p><a href="{{ ORIGIN }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/img-rec">AV女優レコメンド</a> ＞ <a href="{{ ORIGIN }}/img-rec-result/{{ now_url }}">結果</a></p>
     </header>
     <main>
       <div class="balloon5">
@@ -35,11 +35,11 @@
         </div>
         <div class="chatting">
           <div class="says">
-            <p>この女の子たちが似ていると思うぞい！！リンクを押すと<strong>FANZAのページに行ける</strong>からぜひ調べてくれよの！！</p>
+            <p>リンクを押すと<strong>FANZAのページに行ける</strong>からぜひ調べてくれよの！！</p>
           </div>
         </div>
       </div>
-      <div style="overflow: scroll;height:650px">
+      <div>
         {% for name, id, imageURL, affiliateURL in data %}
         <div class="thumbnail">
           {% if affiliateURL=="no-url" %}
