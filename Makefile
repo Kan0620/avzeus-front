@@ -13,3 +13,4 @@ deploy:
 .PHONY: log
 log:
 		heroku logs --tail
+#git push heroku <現在いるブランチ名>:main
