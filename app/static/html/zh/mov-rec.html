@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTHTJQ28ZE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VTHTJQ28ZE');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="全知的人工智能将为你找到你喜欢的成人视频和成人视频女演员">
+    <title>全知的人工智能将为你找到你喜欢的成人视频和成人视频女演员 | AV Zeus 推荐成人视频</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
+    <link rel=stylesheet href="{{ url_for('static', path='css/mov-rec.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='img/favicon_64.ico') }}">
+    
+  </head>
+  
+
+  <body>
+    <header class="site-header">
+      <p style="margin: 10px;"><a href="{{ ORIGIN }}/?lang={{ lang }}">首页</a> ＞ <a href="{{ ORIGIN }}/mov-rec/{{ now_url }}/?lang={{ lang }}">推荐成人视频</a></p>
+      <select id="select">
+        <option value="zh">中文(简体)</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+      <script>
+        const selected = document.getElementById("select");
+        selected.onchange = function() {
+            
+            window.location.href = "{{ ORIGIN }}/mov-rec/{{ now_url }}/?lang=" + selected.value;
+        };
+      </script>
+    </header>
+    <main>
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src="{{ url_for('static', path='img/zeus.png') }}">
+        </div>
+        <div class="chatting">
+          <div class="says">
+            <p>你可以到<strong><a href="{{ affiliateURL }}" target="_blank" rel="noopener noreferrer">链接中去</a></strong>看更多你感兴趣的成人视频</p>
+          </div>
+        </div>
+      </div>
+      <div class="contents">
+        <div class="content" id="movie">
+          <video src={{mov_url}} controls autoplay playsinline alt="動画が見つかりませんでした" id="video"></video>
+        </div>
+        
+        <div class="content" id="thumbnails">
+          
+          <div class="thumbnail">
+            <center>
+              <a href="{{ affiliateURL }}" target="_blank" rel="noopener noreferrer" class="movie-title">
+                <p>now playing</p>
+                {{ mov_title }}<i class="fa-solid fa-up-right-from-square"></i>
+              </a>
+            </center>
+          </div>
+          {% for content_id, title, imageURL in thumbnails %}
+          
+          <div class="thumbnail">
+            <a href="{{ ORIGIN }}/mov-rec/{{saw_ids}}{{content_id}}/?lang={{ lang }}">
+              <img src={{ imageURL }} alt="画像が表示されません" value={{ content_id }}>
+              <p>{{ title }}</p>
+            </a>
+          </div>
+          {% endfor %}
+          
+        </div>
+      </div>
+    </main>
+    <footer style="width: 100%; font-size: 14px; text-align: center;">
+      <p><a href="{{ ORIGIN }}/?lang={{ lang }}">首页</a> | <a href="{{ ORIGIN }}/img-rec/?lang={{ lang }}">推荐成人视频女演员</a> | <a href="{{ ORIGIN }}/mov-rec/init/?lang={{ lang }}">推荐成人视频</a></p>
+      <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
+      <p>© 2022 <a href="{{ ORIGIN }}">av-zeus.com</a> All Rights Reserved.</p>
+    </footer>
+    
+  </body>
+</html>

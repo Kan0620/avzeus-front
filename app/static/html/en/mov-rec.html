@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTHTJQ28ZE"></script>
@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AVゼウスはAIを使ったAVレコメンドサービスです。このページではFANZAからAVをレコメンドをします。">
-    <title>AVをAIがFANZAから探してくれる | AVゼウス AVレコメンドモード</title>
+    <meta name="description" content="Omniscient AI will help you find your favorite adult videos and adult video actresses!">
+    <title>AI will recommend adult videos and adult video | AV Zeus Adult Video</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -28,8 +28,20 @@
   
 
   <body>
-    <header>
-      <p><a href="{{ ORIGIN }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/mov-rec/init">AVレコメンド</a></p>
+    <header class="site-header">
+      <p style="margin: 10px;"><a href="{{ ORIGIN }}/?lang={{ lang }}">Home</a> ＞ <a href="{{ ORIGIN }}/img-rec/?lang={{ lang }}">Adult Video</a></p>
+      <select id="select">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文(简体)</option>
+      </select>
+      <script>
+        const selected = document.getElementById("select");
+        selected.onchange = function() {
+            
+            window.location.href = "{{ ORIGIN }}/mov-rec/{{ now_url }}/?lang=" + selected.value;
+        };
+      </script>
     </header>
     <main>
       <div class="balloon5">
@@ -38,7 +50,7 @@
         </div>
         <div class="chatting">
           <div class="says">
-            <p>気になるAVは<strong><a href="{{ affiliateURL }}" target="_blank" rel="noopener noreferrer">FANZAのリンク</a></strong>に飛べるぞい！！</p>
+            <p>If there is a video you are interested in, you can go to <strong><a href="{{ affiliateURL }}" target="_blank" rel="noopener noreferrer">the link where you can see more details.</a></strong></p>
           </div>
         </div>
       </div>
@@ -60,7 +72,7 @@
           {% for content_id, title, imageURL in thumbnails %}
           
           <div class="thumbnail">
-            <a href="{{ ORIGIN }}/mov-rec/{{saw_ids}}{{content_id}}">
+            <a href="{{ ORIGIN }}/mov-rec/{{saw_ids}}{{content_id}}/?lang={{ lang }}">
               <img src={{ imageURL }} alt="画像が表示されません" value={{ content_id }}>
               <p>{{ title }}</p>
             </a>
@@ -71,7 +83,7 @@
       </div>
     </main>
     <footer style="width: 100%; font-size: 14px; text-align: center;">
-      <p><a href="{{ ORIGIN }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec">AV女優レコメンド</a> | <a href="{{ ORIGIN }}/mov-rec/init">AVレコメンド</a></p>
+      <p><a href="{{ ORIGIN }}/?lang={{ lang }}">Home</a> | <a href="{{ ORIGIN }}/img-rec/?lang={{ lang }}">Adult Video Actress</a> | <a href="{{ ORIGIN }}/mov-rec/init/?lang={{ lang }}">Adult Video</a></p>
       <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
       <p>© 2022 <a href="{{ ORIGIN }}">av-zeus.com</a> All Rights Reserved.</p>
     </footer>

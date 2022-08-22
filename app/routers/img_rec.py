@@ -9,14 +9,14 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/static")
 
 @router.get("/img-rec", response_class=HTMLResponse)
-async def img_rec(request: Request):
-    return templates.TemplateResponse(
-        "html/img-rec.html",
-        {
-            "request": request,
-            "ORIGIN": os.environ["ORIGIN"],
-            "cut_js_path": "cut.js",
-            "predict_js_path": "predict.js"
-            }
-    )
+async def img_rec(request: Request, lang: str = "ja"):
+    if lang in ["ja", "en", "zh"]:
+        return templates.TemplateResponse(
+            f"html/{lang}/img-rec.html",
+            {
+                "request": request,
+                "ORIGIN": os.environ["ORIGIN"],
+                "lang": lang
+                }
+        )
     

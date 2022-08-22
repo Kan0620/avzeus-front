@@ -45,3 +45,33 @@ border-right: 12px solid #d7ebfe;
 margin: 0;
 padding: 0;
 }
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#select {
+    /*デフォルトのスタイルを解除 */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /*スタイル */
+    display: inline-block;
+    /* width: 100%;
+    max-width: 250px; */
+    margin: 10px; /* 前後の余白 */
+    padding: 0.6em 1.5em 0.6em 0.5em; /* 文字周りの余白 */
+    cursor: pointer; /* カーソルを指に */
+    line-height: 1.4; /* 行高 */
+    font-size: 0.95em; /* フォントサイズ */
+    color: #333; /* 文字色 */
+    border-radius: 4px; /* 角丸 */
+    background-color: #f7f9fb; /* 背景色 */
+    border: solid 1px #e1e8ef; /* 枠線 */
+    box-shadow: 0 3px 3px -2px rgba(3, 29, 41, 0.15); /* 影 */
+    /*三角マークを作る */
+    background-image: linear-gradient(45deg, transparent 50%, rgba(0,0,0,0.4) 50%),  linear-gradient(135deg, rgba(0,0,0,0.4) 50%, transparent 50%);
+    background-size: 5px 5px, 5px 5px;
+    background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+    background-repeat: no-repeat;
+}

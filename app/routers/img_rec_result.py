@@ -9,7 +9,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/static")
 
 @router.get("/img-rec-result/{result}", response_class=HTMLResponse)
-async def img_rec_result(result: str, request: Request):
+async def img_rec_result(result: str, request: Request, lang: str = "ja"):
     result_ids = result.split("-")
     names = []
     imageURLs = []
@@ -19,13 +19,15 @@ async def img_rec_result(result: str, request: Request):
         names .append(request.app.state.names[index])
         imageURLs.append(request.app.state.imageURLs[index].replace("http:", "https:"))
         affiliateURLs.append(request.app.state.affiliateURLs[index])
-    return templates.TemplateResponse(
-        "html/img-rec-result.html",
-        {
-            "request": request,
-            "ORIGIN": os.environ["ORIGIN"],
-            "data": zip(names, result_ids, imageURLs, affiliateURLs),
-            "now_url": result
-            }
-    )
+    if lang in ["ja", "en", "zh"]:
+        return templates.TemplateResponse(
+            f"html/{lang}/img-rec-result.html",
+            {
+                "request": request,
+                "ORIGIN": os.environ["ORIGIN"],
+                "data": zip(names, result_ids, imageURLs, affiliateURLs),
+                "now_url": result,
+                "lang": lang
+                }
+        )
     

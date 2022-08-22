@@ -25,8 +25,20 @@
     <link rel="icon" href="{{ url_for('static', path='img/favicon_64.ico') }}">
   </head>
   <body>
-    <header>
-      <p><a href="{{ ORIGIN }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/img-rec">AV女優レコメンド</a> ＞ <a href="{{ ORIGIN }}/img-rec-result/{{ now_url }}">結果</a></p>
+    <header class="site-header">
+      <p style="margin: 10px;"><a href="{{ ORIGIN }}/?lang={{ lang }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/img-rec/?lang={{ lang }}">AV女優レコメンド</a> ＞ <a href="{{ ORIGIN }}/img-rec-result/{{ now_url }}/?lang={{ lang }}">結果</a></p>
+      <select id="select">
+        <option value="ja">language 🌐</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+        <option value="zh">中文(简体)</option>
+      </select>
+      <script>
+        const selected = document.getElementById("select");
+        selected.onchange = function() {
+            window.location.href = "{{ ORIGIN }}/img-rec-result/{{ now_url }}/?lang=" + selected.value;
+        };
+      </script>
     </header>
     <main>
       <div class="balloon5">
@@ -61,7 +73,7 @@
       
     </main>
     <footer style="width: 100%; font-size: 14px; text-align: center;">
-      <p><a href="{{ ORIGIN }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec">AV女優レコメンド</a> | <a href="{{ ORIGIN }}/mov-rec/init">AVレコメンド</a></p>
+      <p><a href="{{ ORIGIN }}/?lang={{ lang }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec/?lang={{ lang }}">AV女優レコメンド</a> | <a href="{{ ORIGIN }}/mov-rec/init/?lang={{ lang }}">AVレコメンド</a></p>
       <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
       <p>© 2022 <a href="{{ ORIGIN }}">av-zeus.com</a> All Rights Reserved.</p>
     </footer>
