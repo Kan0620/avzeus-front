@@ -8,12 +8,14 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/static")
 
 @router.get("/", response_class=HTMLResponse)
-async def index(request: Request):
-    return templates.TemplateResponse(
-        "html/index.html",
-        {
-            "request": request,
-            "ORIGIN": os.environ["ORIGIN"],
-            }
-    )
+async def index(request: Request, lang: str = "ja"):
+    if lang in ["ja", "en", "zh"]:
+        return templates.TemplateResponse(
+            f"html/{lang}/index.html",
+            {
+                "request": request,
+                "ORIGIN": os.environ["ORIGIN"],
+                "lang": lang
+                }
+        )
     
