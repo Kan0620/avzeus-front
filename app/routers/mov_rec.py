@@ -41,4 +41,3 @@ async def mov_rec(saw_ids: str, request: Request, lang: str = "ja"):
                 "now_url": now_url
                 }
         )
-        

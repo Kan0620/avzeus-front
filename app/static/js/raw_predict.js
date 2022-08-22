@@ -1,9 +1,17 @@
 function toResult() {
     
     var sub_btn = document.getElementById("btn");
-    if (sub_btn.value == "OK！！"){
+    sub_btn.style.visibility = 'hidden';
+    if (sub_btn.value == "OK"){
       var zeus = document.getElementById("zeus-says");
-      zeus.innerHTML = "似ているAV女優を探しておるから少し待ってくれよの..."
+      const lang = document.getElementById("select").value;
+      if (lang == "zh") {
+          zeus.innerHTML = "我们正在寻找一个像她的成人视频女演员，请给我们一分钟时间..."
+      } else if (lang == "en"){
+          zeus.innerHTML = "I'm looking for an adult video actress who looks like her, just give me a minute..."
+      } else{
+          zeus.innerHTML = "似ているAV女優を探しておるから少し待ってくれよの..."
+      }
       sub_btn.value = "少々お待ちください"
       var img = document.getElementById("render_image");
       fetch("PREDICT_URL", {

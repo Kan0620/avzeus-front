@@ -2,7 +2,15 @@ const cutImg = (e) => {
     var btn = document.getElementById("btn");
     btn.value = "画像を処理しています..."
     var zeus = document.getElementById("zeus-says");
-    zeus.innerHTML = "ぬぬぬ...画像を処理しとるぞ..."
+    const lang = document.getElementById("select").value;
+    if (lang == "zh") {
+        zeus.innerHTML = "嗯... 我们正在处理图像..."
+    } else if (lang == "en"){
+        zeus.innerHTML = "Mmmm... I'm processing the image..."
+    } else{
+        zeus.innerHTML = "ぬぬぬ...画像を処理しとるぞ..."
+    }
+    
     const reader = new FileReader();
     const imgReader = new Image();
     const maxLength = 640;
@@ -24,7 +32,14 @@ const cutImg = (e) => {
             var img = document.getElementById("render_image");
             img.style.visibility = 'hidden';
             var zeus = document.getElementById("zeus-says");
-            zeus.innerHTML = "顔の部分を探しているからもう少し待ってくれよの..."
+            const lang = document.getElementById("select").value;
+            if (lang == "zh") {
+                zeus.innerHTML = "我们正在寻找脸部的部分，所以你必须再等一等......"
+            } else if (lang == "en"){
+                zeus.innerHTML = "I'm looking for the face part, just need to wait a little longer..."
+            } else{
+                zeus.innerHTML = "顔の部分を探しているからもう少し待ってくれよの..."
+            }
             var btn = document.getElementById("btn");
             btn.value = "顔の部分を探しています..."
             console.log(canvas.toDataURL(imgType).replace(/data:.*\/.*;base64,/, ''))
@@ -51,9 +66,25 @@ const cutImg = (e) => {
                 img.style.visibility = 'visible';
                 btn.style.visibility = 'visible';
                 var zeus = document.getElementById("zeus-says");
-                zeus.innerHTML = "顔の部分はここであっとるかの？よければ<strong>OKボタン</strong>をクリックしてくれ！！"
-                btn.value = "OK！！";
+                const lang = document.getElementById("select").value;
+                if (lang == "zh") {
+                    zeus.innerHTML = "这个地方适合做脸吗？ 如果你喜欢，请点击 <strong>OK</strong>按钮!"
+                } else if (lang == "en"){
+                    zeus.innerHTML = "Is this the right place for the face? Click the <strong>OK button</strong> if you like!"
+                } else{
+                    zeus.innerHTML = "顔の部分はここであっとるかの？よければ<strong>OKボタン</strong>をクリックしてくれ！！"
+                }
+                btn.value = "OK";
             }else{
+                var zeus = document.getElementById("zeus-says");
+                const lang = document.getElementById("select").value;
+                if (lang == "zh") {
+                    zeus.innerHTML = "无法找到面部部分，请选择其他图片。"
+                } else if (lang == "en"){
+                    zeus.innerHTML = "The face part could not be found, please select another image."
+                } else{
+                    zeus.innerHTML = "顔の部分が見つからなかったぞい、他の画像を選んどくれんかの..."
+                }
                 btn.value = "顔の部分が検出できませんでした、他の画像を選択してください"
             }
             })
