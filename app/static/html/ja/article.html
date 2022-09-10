@@ -14,23 +14,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AVゼウスはAIを使いFANZAからAVをレコメンドするサービスです。このページではアップロードされた画像をもとにレコメンドします。">
-    <title>AV女優をAIがFANZAから探してくれる | AVゼウス AV女優レコメンドモード</title>
+    <meta name="description" content="AVゼウスはAIを使いFANZAからAVをレコメンドするサービスです。このページでは人気AV女優{{ actress_name }}さんの紹介をしています。">
+    <title>AV女優をAIがFANZAから探してくれる | AVゼウス {{ actress_name }}さんの紹介記事</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
-    <link rel=stylesheet href="{{ url_for('static', path='css/img-rec.css') }}">
+    <link rel=stylesheet href="{{ url_for('static', path='css/article.css') }}">
     <link rel="icon" href="{{ url_for('static', path='img/favicon_64.ico') }}">
-    <script src="{{ url_for('static', path='js/cut.js') }}"></script>
-    <script src="{{ url_for('static', path='js/predict.js') }}"></script>
     
   </head>
   
   <body>
     <header class="site-header">
-      <p style="margin: 10px;"><a href="{{ ORIGIN }}/?lang={{ lang }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/img-rec/?lang={{ lang }}">AV女優レコメンド</a></p>
+      <p style="margin: 10px;"><a href="{{ ORIGIN }}/?lang={{ lang }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/article-navigation/?lang={{ lang }}">AV女優紹介記事</a> ＞ <a href="{{ ORIGIN }}/article/{{ actress_id }}/?lang={{ lang }}">{{ actress_name }}</a></p>
       <select id="select">
         <option value="ja">language 🌐</option>
         <option value="ja">日本語</option>
@@ -51,23 +49,50 @@
         </div>
         <div class="chatting">
           <div class="says">
-            <p id="zeus-says">お主の<strong>タイプな女の子の顔が映ってる画像</strong>をアップしてくれ！！<strong>似ているAV女優</strong>を教えるやるぞい</p>
+            <p><strong>このページでは<a href="{{ actress_link }}">{{ actress_name }}</a></strong>の紹介をしていくぞい！ まずはプロフィールじゃ！</p>
+          </div>
+        </div>
+      </div>
+      <div class="thumbnail" style="display: flex;">
+        <div>
+          <img src="{{ actress_img }}" height=160 width=160 alt="画像が表示されません">
+        </div>
+        <div>
+          <ul>
+            {% for key, data in profiles %}
+            {% if data!="NoData" %}
+            <li>{{ key }}: {{ data }}</li>
+            {% endif %}
+            {% endfor %}
+            <li><a href="{{ actress_link }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-up-right-from-square">FANZAへ</i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src="{{ url_for('static', path='img/zeus.png') }}">
+        </div>
+        <div class="chatting">
+          <div class="says">
+            <p><strong><a href="{{ actress_link }}">{{ actress_name }}</a></strong>の出演AVの画像を集めたから見てくれよの！<strong>写真をクリックするとFANZAのリンクに行ける</strong>ぞい！</p>
           </div>
         </div>
       </div>
       <div>
-        <form>
-          <input type="file" id= "posted_image"  accept="image/*" onchange="cutImg(this)"/>
-        </form>
+        {% for sample_img_url, mov_cid in sample_img_urls %}
+        <div>
+          <a href="https://www.dmm.co.jp/digital/videoa/-/detail/=/cid={{ mov_cid }}/?utm_medium=dmm_affiliate&utm_source=avzeus-999&utm_campaign=affiliate_api" target="_blank" rel="noopener noreferrer">
+            <img src="{{ sample_img_url }}" class="sample-img" alt="画像が表示されません">
+            <i class="fa-solid fa-up-right-from-square" style="text-align: center;">FANZAへ</i>
+          </a>
+        </div>
+        {% endfor %}
       </div>
-      <div>
-        <img id="render_image" height=160 width=160>
-      </div>
-      <div>
-        <form>
-          <input type="button" id="btn" value="画像をアップしてください" onclick="toResult()" style="visibility:hidden">
-        </form>
-      </div>
+      
+    
+
+
+      
     </main>
     <footer style="width: 100%; font-size: 14px; text-align: center;">
       <p><a href="{{ ORIGIN }}/?lang={{ lang }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec/?lang={{ lang }}">AV女優レコメンド</a> | <a href="{{ ORIGIN }}/mov-rec/init/?lang={{ lang }}">AVレコメンド</a> | <a href="{{ ORIGIN }}/article-navigation/?lang={{ lang }}">AV女優紹介記事</a></p>
@@ -76,4 +101,3 @@
     </footer>
   </body>
 </html>
-

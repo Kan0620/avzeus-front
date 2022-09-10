@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTHTJQ28ZE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VTHTJQ28ZE');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- レスポンシブWebデザインを使うために必要なmetaタグ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AVゼウスはAIを使いFANZAからAVをレコメンドするサービスです。このページでは色々なAV女優の記事を紹介しています。">
+    <title>AV女優をAIがFANZAから探してくれる | AVゼウス AV女優紹介記事</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" type="text/css">
+    <link rel=stylesheet href="{{ url_for('static', path='css/article-navigation.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='img/favicon_64.ico') }}">
+    
+  </head>
+  
+  <body>
+    <header class="site-header">
+      <p style="margin: 10px;"><a href="{{ ORIGIN }}/?lang={{ lang }}">ホーム</a> ＞ <a href="{{ ORIGIN }}/article-navigation/?lang={{ lang }}">AV女優紹介記事</a></p>
+      <select id="select">
+        <option value="ja">language 🌐</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+        <option value="zh">中文(简体)</option>
+      </select>
+      <script>
+        const selected = document.getElementById("select");
+        selected.onchange = function() {
+            window.location.href = "{{ ORIGIN }}/img-rec/?lang=" + selected.value;
+        };
+      </script>
+    </header>
+    <main>
+        <div class="balloon5">
+            <div class="faceicon">
+              <img src="{{ url_for('static', path='img/zeus.png') }}">
+            </div>
+            <div class="chatting">
+              <div class="says">
+                <p><strong>今週のおすすめAV女優</strong>は<strong><a href="{{ weekly_actress_link }}">{{ weekly_actress_name }}</a></strong>じゃ！<strong>下にもいろんな子の紹介記事へのリンク</strong>がたくさんあるから見てくれよの</p>
+              </div>
+            </div>
+        </div>
+        <div class="thumbnail">
+            <a href="{{ ORIGIN }}/article/{{ weekly_actress_id }}/?lang={{ lang }}" style="display: flex;">
+                <div>
+                    <img src="{{ weekly_actress_img }}" height=160 width=160 alt="画像が表示されません">
+                </div>
+                <div>
+                    <center>
+                        <p><strong>【今週のおすすめ】</strong></p>
+                        <p>{{ weekly_actress_name }}の記事を読む！</p>
+                    </center>
+                </div>
+            </a>
+        </div>
+        <div class="thumbnail">
+            <a href="{{ ORIGIN }}/article/{{ random_actress_id }}/?lang={{ lang }}">
+                <center>
+                    <p>【<strong>自分で選べない！</strong>という方は】</p>
+                    <p><strong>おまかせ</strong>でAV女優記事を見る！</p>
+                </center>
+            </a>
+        </div>
+        <div class="balloon5">
+            <div class="faceicon">
+              <img src="{{ url_for('static', path='img/zeus.png') }}">
+            </div>
+            <div class="chatting">
+              <div class="says">
+                <p>AV女優の名前を<strong>五十音順</strong>に並べたのでぜひ好みの子を探して読んでくれよの！</p>
+              </div>
+            </div>
+        </div>
+        {% for hiragana_gyou in hiragana_list %}
+        <div class="thumbnail">
+            <center>
+                <details>
+                    <summary>【 <strong>{{hiragana_gyou[0]}}行</strong>から始まる名前のAV女優 】</summary>
+                        {% for hiragana in hiragana_gyou %}
+                        <details>
+                            <summary>【 <strong>{{ hiragana }}</strong>から始まる名前のAV女優 】</summary>
+                                {% for img_url, id, name in actress_dict[hiragana] %}
+                                    <a href="{{ ORIGIN }}/article/{{ id }}/?lang={{ lang }}" style="margin: 5px;">
+                                        <center>
+                                            <div>
+                                                <img src="{{ img_url }}" height=160 width=160 alt="画像が表示されません">
+                                            </div>
+                                            <div>
+                                                    {{ name }}の記事を読む！
+                                            </div>
+                                        </center>
+                                    </a>
+                                {% endfor %}
+                        </details>
+                        {% endfor %}
+                </details>
+            </center>
+        </div>
+        {% endfor %}
+        
+
+      
+    </main>
+    <footer style="width: 100%; font-size: 14px; text-align: center;">
+      <p><a href="{{ ORIGIN }}/?lang={{ lang }}">ホーム</a> | <a href="{{ ORIGIN }}/img-rec/?lang={{ lang }}">AV女優レコメンド</a> | <a href="{{ ORIGIN }}/mov-rec/init/?lang={{ lang }}">AVレコメンド</a> | <a href="{{ ORIGIN }}/article-navigation/?lang={{ lang }}">AV女優紹介記事</a></p>
+      <a href="https://affiliate.dmm.com/api/"><img src="https://p.dmm.co.jp/p/affiliate/web_service/r18_135_17.gif" width="135" height="17" alt="WEB SERVICE BY FANZA" /></a>
+      <p>© 2022 <a href="{{ ORIGIN }}">av-zeus.com</a> All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
