@@ -22,10 +22,10 @@ def _startup_model(app: FastAPI) -> None:
         with open("app/static/js/predict.js", "w") as cut:
             code = code.replace("PREDICT_URL", URL + "predict").replace("ORIGIN", ORIGIN)
             cut.write(code)
-    app.state.profile_df = pd.read_csv("app/data/1000actress_with_profile.csv")
+    app.state.profile_df = pd.read_csv(os.environ["DATA_URL"]+"1000actress_with_profile.csv")
     app.state.profile_df = app.state.profile_df.sort_values(by="rubys")
     app.state.profile_df["hiragana"] = app.state.profile_df["rubys"].map(lambda x: x[0])
-    app.state.weekly_actress_id = 1042129
+    app.state.weekly_actress_id = 1044864
     app.state.sample_img_df = pd.read_csv(os.environ["DATA_URL"]+"id_with_sampleImageURL.csv")
     app.state.hiragana_list = [
         ["あ", "い", "う", "え", "お"],
@@ -45,14 +45,11 @@ def _startup_model(app: FastAPI) -> None:
             for img_url, id, name in app.state.profile_df.loc[app.state.profile_df["hiragana"]==hiragana, ["imageURL", "id", "name"]].values:
                 app.state.actress_dict[hiragana].append([img_url, id, name])
             
-    print(app.state.sample_img_df)
-                
 def _shutdown_model(app: FastAPI) -> None:
     os.remove("app/js/static/cut.js")
     os.remove("app/js/static/predict.js")
     
     
-
 
 def start_app_handler(app: FastAPI) -> Callable:
     def startup() -> None:
