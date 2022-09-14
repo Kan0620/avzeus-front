@@ -6,6 +6,7 @@ import glob
 
 from fastapi import FastAPI
 import pandas as pd
+import tweepy
 
 
 def _startup_model(app: FastAPI) -> None:
@@ -22,11 +23,11 @@ def _startup_model(app: FastAPI) -> None:
         with open("app/static/js/predict.js", "w") as cut:
             code = code.replace("PREDICT_URL", URL + "predict").replace("ORIGIN", ORIGIN)
             cut.write(code)
-    app.state.profile_df = pd.read_csv(os.environ["DATA_URL"]+"1000actress_with_profile.csv")
+    app.state.profile_df = pd.read_csv(os.environ["DATA_URL"]+"1000actress_with_profile_https.csv")
     app.state.profile_df = app.state.profile_df.sort_values(by="rubys")
     app.state.profile_df["hiragana"] = app.state.profile_df["rubys"].map(lambda x: x[0])
-    app.state.weekly_actress_id = 1044864
-    app.state.sample_img_df = pd.read_csv(os.environ["DATA_URL"]+"id_with_sampleImageURL.csv")
+    app.state.rec_actress_id = 1044864
+    app.state.sample_img_df = pd.read_csv(os.environ["DATA_URL"]+"id_with_sampleImageURL_https.csv")
     app.state.hiragana_list = [
         ["あ", "い", "う", "え", "お"],
         ["か", "き", "く", "け", "こ"],
@@ -44,7 +45,15 @@ def _startup_model(app: FastAPI) -> None:
         for hiragana in hiragana_gyou :
             for img_url, id, name in app.state.profile_df.loc[app.state.profile_df["hiragana"]==hiragana, ["imageURL", "id", "name"]].values:
                 app.state.actress_dict[hiragana].append([img_url, id, name])
-            
+    app.state.twitter_client = tweepy.Client(
+        consumer_key=os.environ["API_KEY"],
+        consumer_secret=os.environ["API_SECRET"],
+        access_token=os.environ["ACCESS_TOKEN"],
+        access_token_secret=os.environ["ACCESS_TOKEN_SECRET"]
+        )
+
+
+
 def _shutdown_model(app: FastAPI) -> None:
     os.remove("app/js/static/cut.js")
     os.remove("app/js/static/predict.js")

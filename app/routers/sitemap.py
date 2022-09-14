@@ -8,7 +8,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/static")
 
 @router.get("/sitemap", response_class=HTMLResponse)
-async def index(request: Request):
+async def sitemap(request: Request):
     return templates.TemplateResponse(
         "sitemap/sitemap.xml",
         {

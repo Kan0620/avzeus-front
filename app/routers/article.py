@@ -10,7 +10,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/static")
 
 @router.get("/article/{id}", response_class=HTMLResponse)
-async def mov_rec(id: int, request: Request, lang: str = "ja"):
+async def article(id: int, request: Request, lang: str = "ja"):
     if lang in ["ja", "en", "zh"]:
         df = request.app.state.profile_df
         img_df = request.app.state.sample_img_df

@@ -4,7 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from app.routers import index, img_rec, mov_rec, img_rec_result, article_navigation, article, sitemap
+from app.routers import index, img_rec, mov_rec, img_rec_result, article_navigation, article, sitemap, change_rec_actress_and_tweet
 from app.settings.settings import api_info, tags_info
 from app.core.event_handler import start_app_handler, stop_app_handler
 
@@ -23,6 +23,7 @@ app.include_router(mov_rec.router, tags=["html"])
 app.include_router(article_navigation.router, tags=["html"])
 app.include_router(article.router, tags=["html"])
 app.include_router(sitemap.router, tags=["html"])
+app.include_router(change_rec_actress_and_tweet.router, tags=["html"])
 
 app.add_event_handler("startup", start_app_handler(app))
 app.add_event_handler("shutdown", stop_app_handler(app))
